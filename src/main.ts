@@ -13,5 +13,6 @@ const counterElement = document.getElementById("counter")!;
 
 button.addEventListener("click", () => {
   counter++;
+  console.log("Jenalee was here :p"); // Jenalee Nguyen jnguy405@ucsc.edu
   counterElement.textContent = counter.toString();
 });
