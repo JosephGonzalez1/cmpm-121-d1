@@ -16,18 +16,29 @@ const counterElement = document.getElementById("counter")!;
 
 // Function to update the counter display
 function updateCounter() {
-  counterElement.textContent = counter.toString();
+  counterElement.textContent = counter.toFixed(2);
 }
 
-// Adds click handler
+// Handle clicks
 button.addEventListener("click", () => {
   counter++;
   console.log("Jenalee was here :p"); // Jenalee Nguyen jnguy405@ucsc.edu
   updateCounter();
 });
 
-// Adds automatic increment every 1 second
-setInterval(() => {
-  counter++;
+// --- Animation-based auto increment ---
+let lastTime = performance.now();
+
+function animate(time: number) {
+  const delta = time - lastTime; // Time since last frame (in ms)
+  lastTime = time;
+
+  // Increase counter by (elapsed seconds * 1 unit per second)
+  counter += delta / 1000; // delta is in ms, so divide by 1000 for seconds
   updateCounter();
-}, 1000);
+
+  requestAnimationFrame(animate);
+}
+
+// Start animation loop
+requestAnimationFrame(animate);
