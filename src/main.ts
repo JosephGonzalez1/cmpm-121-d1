@@ -15,8 +15,10 @@ document.body.innerHTML = `
 
 // --- DOM elements ---
 const counterElement = document.getElementById("counter")!;
-const incrementButton = document.getElementById("increment")!;
-const upgradeButton = document.getElementById("upgrade")!;
+const incrementButton = document.getElementById(
+  "increment",
+) as HTMLButtonElement;
+const upgradeButton = document.getElementById("upgrade") as HTMLButtonElement;
 
 // --- Helper to update the counter display ---
 function updateCounter() {
@@ -36,8 +38,8 @@ incrementButton.addEventListener("click", () => {
 // --- Purchase upgrade button ---
 upgradeButton.addEventListener("click", () => {
   if (counter >= 10) {
-    counter -= 10;     // Deduct cost
-    growthRate += 1;   // Increase growth rate (1 unit/second)
+    counter -= 10; // Deduct cost
+    growthRate += 1; // Increase growth rate (1 unit/second)
     updateCounter();
   }
 });
